@@ -1,6 +1,6 @@
 # data_bird
 
-# Building from Source
+## Building from Source
 
 WARNING: Connection must be private, both devices need same network
 
