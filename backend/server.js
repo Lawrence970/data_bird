@@ -5,3 +5,6 @@ const app = express()
 var server = app.listen(port, () => {
 	console.log(`HTTP server running on http://localhost:${port}`)
 })
+
+
+// mongosh "mongodb+srv://databirdcluster.0hzau.mongodb.net/dataBirdCluster" --username <username>
