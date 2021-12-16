@@ -1,1 +1,5 @@
-Learn about storing/accessing database passwords
+Robby
+	Learn about storing/accessing database passwords (.env file probably)
+	Setup db connection
+
+Isaac
