@@ -1,10 +1,14 @@
 const express = require('express')
 const port = process.env.PORT || 8080
 const app = express()
+const persist = require('./persist')
 
-var server = app.listen(port, () => {
-	console.log(`HTTP server running on http://localhost:${port}`)
-})
+// Database connection
+persist.connect(
 
+	// Server connection
+	server = app.listen(port, () => {
+		console.log(`HTTP server running on http://localhost:${port}`)
+	})
 
-// mongosh "mongodb+srv://databirdcluster.0hzau.mongodb.net/dataBirdCluster" --username <username>
+)

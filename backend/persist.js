@@ -1,29 +1,39 @@
-// where all the DATA base connection is
+// Where the database connection is made and persists
 
-const mongoose = require("mongoose");
-const db = mongoose.connection;
+const mongoose = require("mongoose")
+const dotenv = require("dotenv").config()
+const db = mongoose.connection
 
 function connect(callback) {
-	// connection to mongo DB atlas
-	
+
+	// Make connection string
+	clusterUsername = process.env.CLUSTER_USERNAME
+	clusterPassword = encodeURI(process.env.CLUSTER_PASSWORD)
+	clusterUrl = process.env.CLUSTER_URL
+	dbName = process.env.DB_NAME
+	connectionOptions = "?retryWrites=true&w=majority"
+	connectionString = "mongodb+srv://" + clusterUsername + ":" + clusterPassword + "@" + clusterUrl + "/" + dbName + connectionOptions
+
+	// Connect to mongoDB
 	mongoose
 		.connect(connectionString, {
-			useNewUrlParser: true,
-			useUnifiedTopology: true
+			useNewUrlParser:    true,
+			useUnifiedTopology: true,
 		})
 		.catch(err => {
-			console.log("there was an error connecting to mongo: ", err);
-		});
+			console.log("There was an error connecting to mongo: ", err)
+		})
+
 }
 
 // on this db connection, once open, run the 'callback'
 // a wrapper method
 function onConnect(callback) {
-	db.once("open", callback);
+	db.once("open", callback)
 }
 
 // export as an object
 module.exports = {
 	connect: connect,
 	onConnect: onConnect
-};
+}
